@@ -8,5 +8,6 @@ import androidx.room.PrimaryKey
 open class Note(
     @PrimaryKey(autoGenerate = true)
     var id: Int,
-    var title: String
+    var title: String,
+    var time: String
 )

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
@@ -14,6 +15,7 @@ import com.example.a631k.Adapters.NoteRVAdapter
 import com.example.a631k.Model.Note
 import com.example.a631k.Model.NoteViewModal
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import java.util.*
 
 class MainActivity:  AppCompatActivity() {
     private lateinit var mUserViewModel: NoteViewModal
@@ -40,15 +42,16 @@ class MainActivity:  AppCompatActivity() {
             val inflater = this.layoutInflater
             val mView = inflater.inflate(R.layout.activity_dialog, null)
             val etEmail: EditText = mView.findViewById(R.id.etEmail)
+
             dialogBuilder.setView(mView)
             dialogBuilder.setPositiveButton(
                 "SAVE"
             ) { p0, p1 ->
 
                 val title = etEmail.text.toString()
-                val user = Note(0, title)
+                val user = Note(0, title,  "${Date().hours} ${Date().minutes}")
                 mUserViewModel.addUser(user)
-                Toast.makeText(this@MainActivity, "Success", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
 
             }
             dialogBuilder.setNegativeButton(

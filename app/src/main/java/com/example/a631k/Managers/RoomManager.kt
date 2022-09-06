@@ -9,7 +9,7 @@ import com.example.a631k.Model.Note
 
 @Database(
     entities = [Note::class],
-    version = 1
+    version = 2
 )
 abstract class RoomManager : RoomDatabase() {
 
